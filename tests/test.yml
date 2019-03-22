@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
-  remote_user: root
+  remote_user: mattladany
+  become: yes
   roles:
     - ansible-role-vim
