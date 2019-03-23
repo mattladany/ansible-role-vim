@@ -1,6 +1,6 @@
 # Ansible Role: Vim
 
-Installs vim/macvim on MacOS
+Installs vim's master branch from source on Ubuntu operating systems.
 
 ## Requirements
 

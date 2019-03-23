@@ -1,0 +1,4 @@
+---
+# Debian-specific vars
+
+python3_dir: /usr/lib/python3/config
