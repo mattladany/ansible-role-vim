@@ -8,6 +8,8 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/trusty64"
+#  config.vm.box = "centos/7"
+
   config.vm.network "public_network", ip: "192.168.1.22"
 
   config.vm.provider "virtualbox" do |vb|

@@ -1,0 +1,4 @@
+---
+# RedHat-specfic variables
+
+python3_dir: /lib64/python3/config

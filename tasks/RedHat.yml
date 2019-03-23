@@ -1,0 +1,41 @@
+---
+# tasks for RedHat systems
+
+- name: Ensure the epel-release repo is installed
+  yum:
+    name: epel-release
+    state: present
+
+- name: install packages needed for vim
+  yum:
+    name:
+    - ncurses
+    - ncurses-devel
+    - cmake
+    - make
+    - mono-addins-devel
+    - gcc-c++
+    - ruby
+    - ruby-devel
+    - lua
+    - lua-devel
+    - luajit
+    - luajit-devel
+    - ctags
+    - git
+    - python34
+    - python34-devel
+    - tcl-devel
+    - perl
+    - perl-devel
+    - perl-ExtUtils-ParseXS
+    - perl-ExtUtils-XSpp
+    - perl-ExtUtils-CBuilder
+    - perl-ExtUtils-Embed
+    state: present
+
+- name: create symlink for xsubpp
+  file:
+    src: /usr/bin/xsubpp
+    dest: /usr/share/perl5/ExtUtils/xsubpp
+    state: link
