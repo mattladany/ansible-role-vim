@@ -9,6 +9,7 @@
 - name: install packages needed for vim
   yum:
     name:
+    - wget
     - ncurses
     - ncurses-devel
     - cmake

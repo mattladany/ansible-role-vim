@@ -1,10 +1,26 @@
 ---
 # tasks for installing vim from source
 
-- name: clone the vim repository
-  git:
-    repo: https://github.com/vim/vim.git
-    dest: /usr/local/src/vim
+- name: get a list of vim tags
+  shell: curl -s https://api.github.com/repos/vim/vim/tags | grep "tarball" -m 1 | cut -d '"' -f 4
+  register: tarball_url
+
+- debug:
+    var: tarball_url.stdout_lines
+
+- name: download the vim tarball
+  get_url:
+    url: "{{ tarball_url.stdout_lines[0] }}"
+    dest: /usr/local/src/vim.tar.gz
+
+- name: untar
+  unarchive:
+    src: /usr/local/src/vim.tar.gz
+    dest: /usr/local/src
+    remote_src: yes
+
+- name: change the name of the vim-vim-* directory
+  shell: mv /usr/local/src/vim-vim* /usr/local/src/vim
 
 - name: remove vim if it was already installed
   make:

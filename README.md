@@ -1,6 +1,6 @@
 # Ansible Role: Vim
 
-Installs vim's master branch from source on Ubuntu16.04/Centos7 operating systems.
+Installs the latest Vim release from source on Ubuntu16.04/Centos7 operating systems.
 
 ## Requirements
 
