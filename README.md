@@ -3,7 +3,9 @@
 [![Build Status](https://travis-ci.com/mattladany/ansible-role-vim.svg?branch=master)](https://travis-ci.com/mattladany/ansible-role-vim)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://raw.githubusercontent.com/mattladany/ansible-role-vim/master/LICENSE)
 
-Installs the latest Vim release from source on Ubuntu16.04/Centos7 operating systems.
+Installs the latest [Vim](https://github.com/vim/vim) release from source on Ubuntu16.04/Centos7 operating systems.
+
+**Note:** Many of the steps and packages that get installed by this role were taken from this [YouCompleteMe](https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source) wiki. 
 
 ## Requirements
 
@@ -11,20 +13,18 @@ None
 
 ## Role Variables
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+None
 
 ## Dependencies
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None
 
 ## Example Playbook
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
 ```
 - hosts: servers
     roles:
-      - { role: username.rolename, x: 42 }
+      - { role: mattldany.vim }
 ```
 
 ## License
