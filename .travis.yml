@@ -4,6 +4,11 @@ python: "2.7"
 
 os: linux
 
+addons:
+  apt:
+    package:
+    - python-apt
+
 install:
   - pip install ansible
   - touch ansible.cfg
@@ -15,7 +20,7 @@ script:
   - "ansible-playbook tests/travis-test.yml -i tests/travis-inventory --syntax-check"
 
   # Run the role with ansible-playbook
-  - "ansible-playbook tests/travis-test.yml -i tests/travis-test.yml --connection=local --sudo"
+  - "ansible-playbook tests/travis-test.yml -i tests/travis-test.yml --connection=local"
 
   # Check if vim installed successfully
   - "if [[ ! $(vim --version | grep 8.1) ]]; then echo 'vim did not install successfully'; exit 1; else echo 'vim 8.1 installed successfully!'; fi"
