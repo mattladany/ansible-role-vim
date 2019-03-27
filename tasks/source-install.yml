@@ -4,7 +4,7 @@
 - name: get the list of tags
   uri:
     url: https://api.github.com/repos/vim/vim/tags
-    creates: /usr/local/src/vim
+    creates: /usr/local/src/vim.tar.gz
   register: tags
 
 - name: download the vim tarball
