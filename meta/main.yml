@@ -1,6 +1,6 @@
 galaxy_info:
   author: Matt Ladany
-  description: Install the latest vim on Ubuntu
+  description: Install the latest vim release from source
   license: license (MIT)
   min_ansible_version: 2.4
   platforms:
