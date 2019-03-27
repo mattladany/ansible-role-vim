@@ -1,16 +1,14 @@
 ---
 # tasks for installing vim from source
 
-- name: get a list of vim tags
-  shell: curl -s https://api.github.com/repos/vim/vim/tags | grep "tarball" -m 1 | cut -d '"' -f 4
-  register: tarball_url
-
-- debug:
-    var: tarball_url.stdout_lines
+- name: get the list of tags
+  uri:
+    url: https://api.github.com/repos/vim/vim/tags
+  register: tags
 
 - name: download the vim tarball
   get_url:
-    url: "{{ tarball_url.stdout_lines[0] }}"
+    url: "{{ tags.json[0].tarball_url }}"
     dest: /usr/local/src/vim.tar.gz
 
 - name: untar
@@ -21,16 +19,24 @@
 
 - name: change the name of the vim-vim-* directory
   shell: mv /usr/local/src/vim-vim* /usr/local/src/vim
-
-- name: remove vim if it was already installed
-  make:
-    chdir: /usr/local/src/vim
-    target: distclean
+  args:
+    creates: /usr/local/src/vim
 
 - name: configure
-  command: './configure --with-features=huge --enable-multibyte --enable-rubyinterp=yes --enable-python3interp=yes --with-python3-config-dir={{ python3_dir }} --enable-perlinterp=yes --enable-luainterp=yes --enable-gui=gtk2 --enable-cscope --prefix=/usr/local'
+  command: './configure \
+    --with-features=huge \
+    --enable-multibyte \
+    --enable-rubyinterp=yes \
+    --enable-python3interp=yes \
+    --with-python3-config-dir={{ python3_dir }} \
+    --enable-perlinterp=yes \
+    --enable-luainterp=yes \
+    --enable-gui=gtk2 \
+    --enable-cscope \
+    --prefix=/usr/local'
   args:
     chdir: /usr/local/src/vim
+    creates: /usr/local/src/vim/src/auto/config.h
 
 - name: make
   make:
