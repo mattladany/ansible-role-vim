@@ -6,7 +6,7 @@ os: linux
 
 addons:
   apt:
-    package:
+    packages:
     - python-apt
 
 install:
