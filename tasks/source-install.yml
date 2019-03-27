@@ -4,12 +4,14 @@
 - name: get the list of tags
   uri:
     url: https://api.github.com/repos/vim/vim/tags
+    creates: /usr/local/src/vim
   register: tags
 
 - name: download the vim tarball
   get_url:
     url: "{{ tags.json[0].tarball_url }}"
     dest: /usr/local/src/vim.tar.gz
+  when: tags.json is defined
 
 - name: untar
   unarchive:
