@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: vim
   author: Matt Ladany
   description: Install the latest vim release from source
   license: license (MIT)
