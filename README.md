@@ -24,7 +24,7 @@ None
 ```
 - hosts: servers
     roles:
-      - { role: mattldany.vim }
+      - { role: mattladany.vim }
 ```
 
 ## License
