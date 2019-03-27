@@ -5,7 +5,7 @@
   uri:
     url: https://api.github.com/repos/vim/vim/tags
     dest: /usr/local/src/tags
-    creates: /usr/local/src/vim.tar.gz
+    creates: /usr/local/src/tags
   register: tags
 
 - name: download the vim tarball
@@ -19,7 +19,7 @@
     src: /usr/local/src/vim.tar.gz
     dest: /usr/local/src
     remote_src: yes
-    creates: /usr/local/src/vim-vim*
+    creates: /usr/local/src/vim
 
 - name: change the name of the vim-vim-* directory to vim/
   shell: mv /usr/local/src/vim-vim* /usr/local/src/vim
