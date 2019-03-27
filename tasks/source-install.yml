@@ -16,8 +16,9 @@
     src: /usr/local/src/vim.tar.gz
     dest: /usr/local/src
     remote_src: yes
+    creates: /usr/local/src/vim-vim*
 
-- name: change the name of the vim-vim-* directory
+- name: change the name of the vim-vim-* directory to vim/
   shell: mv /usr/local/src/vim-vim* /usr/local/src/vim
   args:
     creates: /usr/local/src/vim
@@ -37,14 +38,4 @@
   args:
     chdir: /usr/local/src/vim
     creates: /usr/local/src/vim/src/auto/config.h
-
-- name: make
-  make:
-    chdir: /usr/local/src/vim
-    params:
-      VIMRUNTIMEDIR: /usr/local/share/vim/vim81
-
-- name: install
-  make:
-    chdir: /usr/local/src/vim
-    target: install
+  notify: install

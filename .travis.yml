@@ -20,7 +20,14 @@ script:
   - "ansible-playbook tests/travis-test.yml -i tests/travis-inventory --syntax-check"
 
   # Run the role with ansible-playbook
-  - "ansible-playbook tests/travis-test.yml -i tests/travis-test.yml --connection=local"
+  - "ansible-playbook tests/travis-test.yml -i tests/travis-inventory --connection=local"
+
+  # Run the role again to check for idempotence
+  - >
+      ansible-playbook tests/travis-test.yml -i tests/travis-inventory --connection=local
+      | grep -q 'changed=0.*failed=0'
+      && (echo 'Idempotence test: pass' && exit 0)
+      || (echo 'Idempotence test: fail' && exit 1)
 
   # Check if vim installed successfully
   - "if [[ ! $(vim --version | grep 8.1) ]]; then echo 'vim did not install successfully'; exit 1; else echo 'vim 8.1 installed successfully!'; fi"
