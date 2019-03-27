@@ -5,7 +5,8 @@
 # Mac files
 .DS_Store
 
-# Retry
+# Ansible
+ansible.cfg
 *.retry
 
 # Vagrant
