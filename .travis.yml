@@ -7,7 +7,7 @@ os: linux
 install:
   - pip install ansible
   - touch ansible.cfg
-  - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
+  - printf '[defaults]\nroles_path = ../' > ansible.cfg
 
 script:
 
