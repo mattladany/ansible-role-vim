@@ -4,27 +4,27 @@
 - name: get the list of tags
   uri:
     url: https://api.github.com/repos/vim/vim/tags
-    dest: /usr/local/src/tags
-    creates: /usr/local/src/tags
+    dest: "{{ base_dir }}/tags"
+    creates: "{{ base_dir }}/tags"
   register: tags
 
 - name: download the vim tarball
   get_url:
     url: "{{ tags.json[0].tarball_url }}"
-    dest: /usr/local/src/vim.tar.gz
+    dest: "{{ base_dir }}vim.tar.gz"
   when: tags.json is defined
 
 - name: untar
   unarchive:
-    src: /usr/local/src/vim.tar.gz
-    dest: /usr/local/src
+    src: "{{ base_dir }}vim.tar.gz"
+    dest: "{{ base_dir }}"
     remote_src: yes
-    creates: /usr/local/src/vim
+    creates: "{{ vim_base_dir }}"
 
 - name: change the name of the vim-vim-* directory to vim/
-  shell: mv /usr/local/src/vim-vim* /usr/local/src/vim
+  shell: "mv /usr/local/src/vim-vim* {{ vim_base_dir }}"
   args:
-    creates: /usr/local/src/vim
+    creates: "{{ vim_base_dir }}"
 
 - name: configure
   command: './configure \
@@ -39,6 +39,6 @@
     --enable-cscope \
     --prefix=/usr/local'
   args:
-    chdir: /usr/local/src/vim
-    creates: /usr/local/src/vim/src/auto/config.h
+    chdir: "{{ vim_base_dir }}"
+    creates: "{{ vim_base_dir }}/src/auto/config.h"
   notify: install

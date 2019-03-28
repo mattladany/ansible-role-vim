@@ -8,31 +8,7 @@
 
 - name: install packages needed for vim
   yum:
-    name:
-    - wget
-    - ncurses
-    - ncurses-devel
-    - cmake
-    - make
-    - mono-addins-devel
-    - gcc-c++
-    - ruby
-    - ruby-devel
-    - lua
-    - lua-devel
-    - luajit
-    - luajit-devel
-    - ctags
-    - git
-    - python34
-    - python34-devel
-    - tcl-devel
-    - perl
-    - perl-devel
-    - perl-ExtUtils-ParseXS
-    - perl-ExtUtils-XSpp
-    - perl-ExtUtils-CBuilder
-    - perl-ExtUtils-Embed
+    name: "{{ vim_dependencies }}"
     state: present
 
 - name: create symlink for xsubpp
@@ -40,3 +16,8 @@
     src: /usr/bin/xsubpp
     dest: /usr/share/perl5/ExtUtils/xsubpp
     state: link
+
+- name: Ensure vim 7.4 is not installed.
+  yum:
+    name: vim
+    state: absent

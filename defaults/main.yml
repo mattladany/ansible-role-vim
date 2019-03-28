@@ -1,2 +1,8 @@
 ---
 # defaults file for ansible-role-vim
+
+# Where the tarball should be downloaded to
+base_dir: /usr/local/src
+
+# Where the tarball should be unpacked to
+vim_base_dir: "{{ base_dir }}/vim"

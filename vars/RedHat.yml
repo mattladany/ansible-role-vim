@@ -1,4 +1,30 @@
 ---
 # RedHat-specfic variables
 
-python3_dir: /lib64/python3/config
+_vim_dependencies:
+  - wget
+  - ncurses
+  - ncurses-devel
+  - cmake
+  - make
+  - mono-addins-devel
+  - gcc-c++
+  - ruby
+  - ruby-devel
+  - lua
+  - lua-devel
+  - luajit
+  - luajit-devel
+  - ctags
+  - git
+  - python34
+  - python34-devel
+  - tcl-devel
+  - perl
+  - perl-devel
+  - perl-ExtUtils-ParseXS
+  - perl-ExtUtils-XSpp
+  - perl-ExtUtils-CBuilder
+  - perl-ExtUtils-Embed
+
+_vim_python3_dir: /lib64/python3/config
