@@ -32,7 +32,7 @@
     --enable-multibyte \
     --enable-rubyinterp=yes \
     --enable-python3interp=yes \
-    --with-python3-config-dir={{ python3_dir }} \
+    --with-python3-config-dir={{ vim_python3_dir }} \
     --enable-perlinterp=yes \
     --enable-luainterp=yes \
     --enable-gui=gtk2 \
