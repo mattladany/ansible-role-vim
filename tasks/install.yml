@@ -7,16 +7,23 @@
     dest: "{{ base_dir }}/tags"
     creates: "{{ base_dir }}/tags"
   register: tags
+  when: vim_latest
 
 - name: download the vim tarball
   get_url:
     url: "{{ tags.json[0].tarball_url }}"
-    dest: "{{ base_dir }}vim.tar.gz"
+    dest: "{{ base_dir }}/vim.tar.gz"
   when: tags.json is defined
+
+- name: download the vim tarball
+  get_url:
+    url: "{{ vim_tarball_url }}"
+    dest: "{{ base_dir }}/vim.tar.gz"
+  when: not vim_latest
 
 - name: untar
   unarchive:
-    src: "{{ base_dir }}vim.tar.gz"
+    src: "{{ base_dir }}/vim.tar.gz"
     dest: "{{ base_dir }}"
     remote_src: yes
     creates: "{{ vim_base_dir }}"
