@@ -1,12 +1,12 @@
 ---
 # tasks for Debian systems
 
-- name: install necessary vim packages
+- name: Ensure the given packages are installed
   apt:
     name: "{{ vim_dependencies }}"
     state: present
 
-- name: uninstall vim 7.4 (pre-installed with Debian systems)
+- name: Ensure vim 7.4 is not installed (pre-installed with Debian systems)
   apt:
     name: vim
     state: absent

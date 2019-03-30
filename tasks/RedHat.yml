@@ -6,18 +6,18 @@
     name: epel-release
     state: present
 
-- name: install packages needed for vim
+- name: Ensure the necessary vim packages are installed
   yum:
     name: "{{ vim_dependencies }}"
     state: present
 
-- name: create symlink for xsubpp
+- name: Ensure the symlink for xsubpp is created
   file:
     src: /usr/bin/xsubpp
     dest: /usr/share/perl5/ExtUtils/xsubpp
     state: link
 
-- name: Ensure vim 7.4 is not installed.
+- name: Ensure vim 7.4 is not installed
   yum:
     name: vim
     state: absent

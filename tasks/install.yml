@@ -1,39 +1,44 @@
 ---
 # tasks for installing vim from source
 
-- name: get the list of tags
+- name: Ensure the vim_download_dir exists
+  file:
+    path: "{{ vim_download_dir }}"
+    state: directory
+
+- name: Retrieve the latest list of tags
   uri:
     url: https://api.github.com/repos/vim/vim/tags
-    dest: "{{ base_dir }}/tags"
-    creates: "{{ base_dir }}/tags"
+    dest: "{{ vim_download_dir }}/tags"
+    creates: "{{ vim_download_dir }}/tags"
   register: tags
   when: vim_latest
 
-- name: download the vim tarball
+- name: Ensure the latest vim tarball is downloaded
   get_url:
     url: "{{ tags.json[0].tarball_url }}"
-    dest: "{{ base_dir }}/vim.tar.gz"
+    dest: "{{ vim_download_dir }}/vim.tar.gz"
   when: tags.json is defined
 
-- name: download the vim tarball
+- name: Ensure the specified vim tarball is downloaded
   get_url:
     url: "{{ vim_tarball_url }}"
-    dest: "{{ base_dir }}/vim.tar.gz"
+    dest: "{{ vim_download_dir }}/vim.tar.gz"
   when: not vim_latest
 
-- name: untar
+- name: Untar the download
   unarchive:
-    src: "{{ base_dir }}/vim.tar.gz"
-    dest: "{{ base_dir }}"
+    src: "{{ vim_download_dir }}/vim.tar.gz"
+    dest: "{{ vim_download_dir }}"
     remote_src: yes
-    creates: "{{ vim_base_dir }}"
+    creates: "{{ vim_src_dir }}"
 
-- name: change the name of the vim-vim-* directory to vim/
-  shell: "mv /usr/local/src/vim-vim* {{ vim_base_dir }}"
+- name: Move the vim-vim-* directory to {{ vim_src_dir }}
+  shell: "mv {{ vim_download_dir}}/vim-vim* {{ vim_src_dir }}"
   args:
-    creates: "{{ vim_base_dir }}"
+    creates: "{{ vim_src_dir }}"
 
-- name: configure
+- name: Run ./configure if it has not been run already
   command: './configure \
     --with-features=huge \
     --enable-multibyte \
@@ -46,6 +51,6 @@
     --enable-cscope \
     --prefix=/usr/local'
   args:
-    chdir: "{{ vim_base_dir }}"
-    creates: "{{ vim_base_dir }}/src/auto/config.h"
+    chdir: "{{ vim_src_dir }}"
+    creates: "{{ vim_src_dir }}/src/auto/config.h"
   notify: install

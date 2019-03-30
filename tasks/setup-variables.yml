@@ -1,12 +1,12 @@
 ---
 # setup this role's variables
 
-- name: Define vim_dependencies.
+- name: Define vim_dependencies
   set_fact:
     vim_dependencies: "{{ _vim_dependencies | list }}"
   when: vim_dependencies is not defined
 
-- name: Define vim_python3_dir.
+- name: Define vim_python3_dir
   set_fact:
     vim_python3_dir: "{{ _vim_python3_dir }}"
   when: vim_python3_dir is not defined

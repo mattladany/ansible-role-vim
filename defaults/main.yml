@@ -11,7 +11,7 @@ vim_tarball_url: "https://github.com/vim/vim/tarball/{{ vim_version }}"
 vim_latest: false
 
 # Where the tarball should be downloaded to
-base_dir: /usr/local/src
+vim_download_dir: /usr/local/src
 
 # Where the tarball should be unpacked to
-vim_base_dir: "{{ base_dir }}/vim"
+vim_src_dir: "{{ vim_download_dir }}/vim"

@@ -1,6 +1,7 @@
 # Ansible Role: Vim
 
 [![Build Status](https://travis-ci.com/mattladany/ansible-role-vim.svg?branch=master)](https://travis-ci.com/mattladany/ansible-role-vim)
+[!(https://img.shields.io/ansible/role/39137.svg)](https://galaxy.ansible.com/mattladany/vim)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://raw.githubusercontent.com/mattladany/ansible-role-vim/master/LICENSE)
 
 Installs the latest (or specified) [vim](https://github.com/vim/vim) 'release' from source on Ubuntu16.04 and Centos7 systems.
@@ -35,13 +36,13 @@ The url to download the vim tarball from.
 
 Whether the latest version of vim should be found and installed, or if the specified version should be used.
 
-**IMPORTANT:** getting the latest version may have unreliable results without pairing an SSH key with Github, since Github blocks too many requests from the same IP address without one (this is why many of my early travis-ci tests failed). See [here](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for how to set up a new SSH key.
+**IMPORTANT:** getting the latest version may have unreliable results without pairing an SSH key with Github, since Github blocks too many requests from the same IP address without one (this is why many of my early travis-ci tests failed). See [here](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for how to set up a new SSH key with Github.
 
-```base_dir: /usr/local/src```
+```vim_download_dir: /usr/local/src```
 
 Where the tarball should be downloaded to.
 
-```vim_base_dir: {{ base_dir }}/vim```
+```vim_src_dir: {{ vim_download_dir }}/vim```
 
 Where the tarball should be untar'd to.
 
