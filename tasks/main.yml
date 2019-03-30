@@ -1,9 +1,11 @@
 ---
 # tasks file for vim
 
-- name: Include OS-specific variables.
+- name: Include OS-specific variables
   include_vars: "{{ ansible_os_family }}.yml"
+
+- include_tasks: setup-variables.yml
 
 - include_tasks: "{{ ansible_os_family }}.yml"
 
-- include_tasks: source-install.yml
+- include_tasks: install.yml

@@ -1,31 +1,12 @@
 ---
 # tasks for Debian systems
 
-- name: install necessary vim packages
+- name: Ensure the given packages are installed
   apt:
-    name:
-    - wget
-    - git
-    - curl
-    - libgnome2-dev
-    - libgnomeui-dev
-    - libgtk2.0-dev
-    - libatk1.0-dev
-    - libcairo2-dev
-    - libx11-dev
-    - libxpm-dev
-    - python3
-    - python3-dev
-    - lua5.1
-    - liblua5.1-dev
-    - libperl-dev
-    - cmake
-    - make
-    - mono-xbuild
-    - ruby-dev
+    name: "{{ vim_dependencies }}"
     state: present
 
-- name: uninstall vim 7.4 (pre-installed with Debian systems)
+- name: Ensure vim 7.4 is not installed (pre-installed with Debian systems)
   apt:
     name: vim
     state: absent

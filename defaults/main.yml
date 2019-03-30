@@ -1,2 +1,17 @@
 ---
 # defaults file for ansible-role-vim
+
+# The version of vim to install
+vim_version: v8.1.1057
+
+# The tarball to to download
+vim_tarball_url: "https://github.com/vim/vim/tarball/{{ vim_version }}"
+
+# Whether the latest version of vim should be installed on not
+vim_latest: false
+
+# Where the tarball should be downloaded to
+vim_download_dir: /usr/local/src
+
+# Where the tarball should be unpacked to
+vim_src_dir: "{{ vim_download_dir }}/vim"
