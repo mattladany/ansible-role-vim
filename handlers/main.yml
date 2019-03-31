@@ -5,13 +5,13 @@
 
 - name: make
   make:
-    chdir: /usr/local/src/vim
+    chdir: "{{ vim_src_dir }}"
     params:
-      VIMRUNTIMEDIR: /usr/local/share/vim/vim81
+      VIMRUNTIMEDIR: "{{ vim_runtime_dir }}"
   listen: install
 
-- name: install
+- name: make install
   make:
-    chdir: /usr/local/src/vim
+    chdir: "{{ vim_src_dir }}"
     target: install
   listen: install

@@ -1,8 +1,8 @@
 # Ansible Role: Vim
 
 [![Build Status](https://travis-ci.com/mattladany/ansible-role-vim.svg?branch=master)](https://travis-ci.com/mattladany/ansible-role-vim)
-[!(https://img.shields.io/ansible/role/39137.svg)](https://galaxy.ansible.com/mattladany/vim)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://raw.githubusercontent.com/mattladany/ansible-role-vim/master/LICENSE)
+[![role](https://img.shields.io/ansible/role/39137.svg)](https://galaxy.ansible.com/mattladany/vim)
+[![license](https://img.shields.io/badge/License-MIT-blue.svg)](https://raw.githubusercontent.com/mattladany/ansible-role-vim/master/LICENSE)
 
 Installs the latest (or specified) [vim](https://github.com/vim/vim) 'release' from source on Ubuntu16.04 and Centos7 systems.
 
@@ -45,6 +45,10 @@ Where the tarball should be downloaded to.
 ```vim_src_dir: {{ vim_download_dir }}/vim```
 
 Where the tarball should be untar'd to.
+
+```vim_runtime_dir: /usr/local/share/vim/vim81```
+
+Should not be changed unless you want a vim version older than 8.1.
 
 ## Dependencies
 

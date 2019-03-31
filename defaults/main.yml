@@ -15,3 +15,7 @@ vim_download_dir: /usr/local/src
 
 # Where the tarball should be unpacked to
 vim_src_dir: "{{ vim_download_dir }}/vim"
+
+# The VIMRUNTIMEDIR make variable
+vim_runtime_dir: /usr/local/share/vim/vim81
+
