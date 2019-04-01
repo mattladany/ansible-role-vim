@@ -34,7 +34,7 @@
     creates: "{{ vim_src_dir }}"
 
 - name: Move the vim-vim-* directory to {{ vim_src_dir }}
-  shell: "mv {{ vim_download_dir}}/vim-vim* {{ vim_src_dir }}"
+  shell: "mv {{ vim_download_dir }}/vim-vim* {{ vim_src_dir }}"
   args:
     creates: "{{ vim_src_dir }}"
 

@@ -18,4 +18,3 @@ vim_src_dir: "{{ vim_download_dir }}/vim"
 
 # The VIMRUNTIMEDIR make variable
 vim_runtime_dir: /usr/local/share/vim/vim81
-

@@ -12,14 +12,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Centos 7
-  config.vm.define "centos" do | centos|
+  config.vm.define "centos" do | centos |
     centos.vm.box = "centos/7"
     centos.vm.network "public_network", ip: "192.168.1.23"
   end
 
-  config.vm.provider "virtualbox" do |vb|
-     vb.gui = true
-     vb.memory = "1024"
-   end
+  config.vm.provider "virtualbox" do | vb |
+     vb.memory = "2048"
+  end
 
 end

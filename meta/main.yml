@@ -1,20 +1,21 @@
+---
 galaxy_info:
   role_name: vim
   author: Matt Ladany
-  description: Install the latest vim release from source
+  description: Installs vim from source
   license: license (MIT)
   min_ansible_version: 2.4
   platforms:
-  - name: EL
-    versions:
-    - 7
-  - name: Ubuntu
-    versions:
-    - trusty
+    - name: EL
+      versions:
+        - 7
+    - name: Ubuntu
+      versions:
+        - trusty
   galaxy_tags:
-  - vim
-  - editor
-  - texteditor
-  - development
+    - vim
+    - editor
+    - texteditor
+    - development
 
 dependencies: []
