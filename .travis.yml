@@ -38,4 +38,4 @@ script:
   - "if [[ ! $(vim --version | grep +lua) ]]; then echo 'vim did not compile with lua successfully'; exit 1; fi"
   - "if [[ ! $(vim --version | grep +tcl) ]]; then echo 'vim did not compile with tcl successfully'; exit 1; fi"
   
-  - "echo 'vim installed and compiled successfully
+  - "echo 'vim installed and compiled successfully'"
