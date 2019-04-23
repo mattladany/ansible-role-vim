@@ -36,6 +36,8 @@ script:
   - "if [[ ! $(vim --version | grep +python3) ]]; then echo 'vim did not compile with python3 successfully'; exit 1; fi"
   - "if [[ ! $(vim --version | grep +ruby) ]]; then echo 'vim did not compile with ruby successfully'; exit 1; fi"
   - "if [[ ! $(vim --version | grep +lua) ]]; then echo 'vim did not compile with lua successfully'; exit 1; fi"
-  - "if [[ ! $(vim --version | grep +tcl) ]]; then echo 'vim did not compile with tcl successfully'; exit 1; fi"
-  
+  - "if [[ ! $(vim --version | grep +perl) ]]; then echo 'vim did not compile with perl successfully'; exit 1; fi"
+  - "if [[ ! $(vim --version | grep +multi_byte) ]]; then echo 'vim did not compile with multi_byte successfully'; exit 1; fi"
+  - "if [[ ! $(vim --version | grep +cscope) ]]; then echo 'vim did not compile with cscope successfully'; exit 1; fi"
+
   - "echo 'vim installed and compiled successfully'"
