@@ -1,12 +1,61 @@
 ---
 # setup this role's variables
 
+# vim_dependencies
+
 - name: Define vim_dependencies
   set_fact:
-    vim_dependencies: "{{ _vim_dependencies | list }}"
+    vim_dependencies: "{{ _vim_dependencies['standard'] | list }}"
   when: vim_dependencies is not defined
 
-- name: Define vim_python3_dir
+- name: Add lua to vim_dependencies
   set_fact:
-    vim_python3_dir: "{{ _vim_python3_dir }}"
-  when: vim_python3_dir is not defined
+    vim_dependencies: "{{ vim_dependencies + _vim_dependencies['lua'] }}"
+  when: compile_with['lua']
+
+- name: Add ruby to vim_dependencies
+  set_fact:
+    vim_dependencies: "{{ vim_dependencies + _vim_dependencies['ruby'] }}"
+  when: compile_with['ruby']
+
+- name: Add python3 to vim_dependencies
+  set_fact:
+    vim_dependencies: "{{ vim_dependencies + _vim_dependencies['python3'] }}"
+  when: compile_with['python3']
+
+- name: Add tcl to vim_dependencies
+  set_fact:
+    vim_dependencies: "{{ vim_dependencies + _vim_dependencies['tcl'] }}"
+  when: compile_with['tcl']
+
+- name: Add perl to vim_dependencies
+  set_fact:
+    vim_dependencies: "{{ vim_dependencies + _vim_dependencies['perl'] }}"
+  when: compile_with['perl']
+
+# configure_flags
+
+- name: Define configure flags
+  set_fact:
+    configure_flags: "{{ _configure_flags['standard'] }}"
+  when: configure_flags is not defined
+
+- name: Add lua to configure_flags
+  set_fact:
+    configure_flags: "{{ configure_flags + ' ' + _configure_flags['lua'] }}"
+  when: compile_with['lua']
+
+- name: Add ruby to configure_flags
+  set_fact:
+    configure_flags: "{{ configure_flags + ' ' + _configure_flags['ruby'] }}"
+  when: compile_with['ruby']
+
+- name: Add python3 to configure_flags
+  set_fact:
+    configure_flags: "{{ configure_flags + ' ' + _configure_flags['python3'] }}"
+  when: compile_with['python3']
+
+- name: Add perl to configure_flags
+  set_fact:
+    configure_flags: "{{ configure_flags + ' ' + _configure_flags['perl'] }}"
+  when: compile_with['perl']

@@ -39,17 +39,7 @@
     creates: "{{ vim_src_dir }}"
 
 - name: Run ./configure if it has not been run already
-  command: './configure \
-    --with-features=huge \
-    --enable-multibyte \
-    --enable-rubyinterp=yes \
-    --enable-python3interp=yes \
-    --with-python3-config-dir={{ vim_python3_dir }} \
-    --enable-perlinterp=yes \
-    --enable-luainterp=yes \
-    --enable-gui=gtk2 \
-    --enable-cscope \
-    --prefix=/usr/local'
+  command: "./configure {{ configure_flags }}"
   args:
     chdir: "{{ vim_src_dir }}"
     creates: "{{ vim_src_dir }}/src/auto/config.h"

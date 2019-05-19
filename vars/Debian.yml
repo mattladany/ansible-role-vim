@@ -2,24 +2,39 @@
 # Debian-specific vars
 
 _vim_dependencies:
-  - wget
-  - git
-  - curl
-  - libgnome2-dev
-  - libgnomeui-dev
-  - libgtk2.0-dev
-  - libatk1.0-dev
-  - libcairo2-dev
-  - libx11-dev
-  - libxpm-dev
-  - python3
-  - python3-dev
-  - lua5.1
-  - liblua5.1-dev
-  - libperl-dev
-  - cmake
-  - make
-  - mono-xbuild
-  - ruby-dev
+  standard:
+    - wget
+    - git
+    - curl
+    - libgnome2-dev
+    - libgnomeui-dev
+    - libgtk2.0-dev
+    - libatk1.0-dev
+    - libcairo2-dev
+    - libx11-dev
+    - libxpm-dev
+    - cmake
+    - make
+    - mono-xbuild
+  lua:
+    - lua5.1
+    - liblua5.1-dev
+  ruby:
+    - ruby-dev
+  python3:
+    - python3
+    - python3-dev
+  tcl:
+    - tcl
+    - tcl-dev
+  perl:
+    - libperl-dev
 
 _vim_python3_dir: /usr/lib/python3/config
+
+_configure_flags:
+  standard: "--with-features=huge --enable-multibyte --enable-gui=gtk2 --enable-cscope --prefix=/usr/local"
+  lua: "--enable-luainterp=yes"
+  ruby: "--enable-rubyinterp=yes"
+  python3: "--enable-python3interp=yes --with-python3-config-dir={{_vim_python3_dir}}"
+  perl: "--enable-perlinterp=yes"

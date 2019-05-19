@@ -2,29 +2,41 @@
 # RedHat-specfic variables
 
 _vim_dependencies:
-  - wget
-  - ncurses
-  - ncurses-devel
-  - cmake
-  - make
-  - mono-addins-devel
-  - gcc-c++
-  - ruby
-  - ruby-devel
-  - lua
-  - lua-devel
-  - luajit
-  - luajit-devel
-  - ctags
-  - git
-  - python34
-  - python34-devel
-  - tcl-devel
-  - perl
-  - perl-devel
-  - perl-ExtUtils-ParseXS
-  - perl-ExtUtils-XSpp
-  - perl-ExtUtils-CBuilder
-  - perl-ExtUtils-Embed
+  standard:
+    - wget
+    - ncurses
+    - ncurses-devel
+    - cmake
+    - make
+    - gcc-c++
+    - git
+    - ctags
+  lua:
+    - lua
+    - lua-devel
+    - luajit
+    - luajit-devel
+  ruby:
+    - ruby
+    - ruby-devel
+  python3:
+    - python34
+    - python34-devel
+  tcl:
+    - tcl-devel
+  perl:
+    - perl
+    - perl-devel
+    - perl-ExtUtils-ParseXS
+    - perl-ExtUtils-XSpp
+    - perl-ExtUtils-CBuilder
+    - perl-ExtUtils-Embed
 
 _vim_python3_dir: /lib64/python3/config
+
+_configure_flags:
+  standard: "--with-features=huge --enable-multibyte --enable-gui=gtk2 --enable-cscope --prefix=/usr/local"
+  lua: "--enable-luainterp=yes"
+  ruby: "--enable-rubyinterp=yes"
+  python3: "--enable-python3interp=yes --with-python3-config-dir={{_vim_python3_dir}}"
+  perl: "--enable-perlinterp=yes"
