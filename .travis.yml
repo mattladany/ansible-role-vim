@@ -30,7 +30,7 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
 
   # Check if vim installed successfully
-  - "if [[ ! $(vim --version | grep 8.1) ]]; then echo 'vim did not install successfully'; exit 1; fi"
+  - "if [[ ! $(vim --version | grep 8.2) ]]; then echo 'vim did not install successfully'; exit 1; fi"
 
   # Check if vim was compiled with the specified dependencies
   - "if [[ ! $(vim --version | grep +python3) ]]; then echo 'vim did not compile with python3 successfully'; exit 1; fi"
